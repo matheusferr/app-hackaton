@@ -2,6 +2,7 @@ import { Model } from 'sequelize';
 import {
   AllowNull,
   AutoIncrement,
+  BeforeSave,
   Column,
   PrimaryKey,
   Table,

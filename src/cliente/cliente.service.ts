@@ -1,26 +1,58 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/sequelize';
+import { Cliente } from './entities/cliente.entity';
 import { CreateClienteDto } from './dto/create-cliente.dto';
 import { UpdateClienteDto } from './dto/update-cliente.dto';
 
 @Injectable()
 export class ClienteService {
-  create(createClienteDto: CreateClienteDto) {
-    return 'This action adds a new cliente';
-  }
+  constructor(
+    @InjectModel(Cliente)
+    private clienteModel: typeof Cliente,
+  ) {}
 
   findAll() {
-    return `This action returns all cliente`;
+    return this.clienteModel.findAll();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} cliente`;
+  findById(id: number) {
+    return this.clienteModel.findByPk(id, { rejectOnEmpty: true });
   }
 
-  update(id: number, updateClienteDto: UpdateClienteDto) {
-    return `This action updates a #${id} cliente`;
+  findByNome(nome: string) {
+    return this.clienteModel.findOne({
+      where: {
+        nome,
+      },
+      rejectOnEmpty: true,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} cliente`;
+  create(createClienteDto: CreateClienteDto) {
+    return this.clienteModel.create(createClienteDto);
+  }
+
+  async update(id: number, updateClienteDto: UpdateClienteDto) {
+    const clienteExistente = await this.clienteModel.findByPk(id, {
+      rejectOnEmpty: true,
+    });
+
+    clienteExistente.telefone = updateClienteDto.telefone;
+
+    await clienteExistente.save();
+
+    return clienteExistente;
+  }
+
+  async remove(id: number) {
+    await this.clienteModel.findByPk(id, {
+      rejectOnEmpty: true,
+    });
+
+    this.clienteModel.destroy({
+      where: {
+        id,
+      },
+    });
   }
 }
