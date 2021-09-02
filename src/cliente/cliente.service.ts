@@ -16,7 +16,7 @@ export class ClienteService {
   }
 
   findById(id: number) {
-    return this.clienteModel.findByPk(id, { rejectOnEmpty: true });
+    return this.clienteModel.findByPk(1, { rejectOnEmpty: true });
   }
 
   findByNome(nome: string) {
