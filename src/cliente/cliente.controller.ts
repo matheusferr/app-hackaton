@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { ClienteService } from './cliente.service';
 import { CreateClienteDto } from './dto/create-cliente.dto';
@@ -23,6 +24,11 @@ export class ClienteController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.clienteService.findById(+id);
+  }
+
+  @Get()
+  findByNome(@Query('nome') nome: string) {
+    return this.clienteService.findByNome(nome);
   }
 
   @Post()

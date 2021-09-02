@@ -19,6 +19,15 @@ export class ClienteService {
     return this.clienteModel.findByPk(id, { rejectOnEmpty: true });
   }
 
+  findByNome(nome: string) {
+    return this.clienteModel.findOne({
+      where: {
+        nome,
+      },
+      rejectOnEmpty: true,
+    });
+  }
+
   create(createClienteDto: CreateClienteDto) {
     return this.clienteModel.create(createClienteDto);
   }
