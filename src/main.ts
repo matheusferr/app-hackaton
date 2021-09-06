@@ -18,7 +18,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('API clientes')
     .setDescription('Documentação API clientes')
-    .setVersion('1.0.1')
+    .setVersion('1.1.2')
     .addTag('Clientes')
     .addServer('/api')
     .build();
