@@ -1,6 +1,6 @@
 {
   "name": "app-hackaton",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "author": "",
   "private": true,
@@ -43,6 +43,7 @@
     "@types/node": "^16.0.0",
     "@types/sequelize": "^4.28.10",
     "@types/supertest": "^2.0.11",
+    "@types/validator": "^13.6.3",
     "@typescript-eslint/eslint-plugin": "^4.30.0",
     "@typescript-eslint/parser": "^4.30.0",
     "eslint": "^7.32.0",
