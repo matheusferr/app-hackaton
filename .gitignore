@@ -1,4 +1,11 @@
+# Deps
 node_modules
 dist
 
+# IDE
 .vscode
+.idea
+
+# Env
+.env
+.env.*
