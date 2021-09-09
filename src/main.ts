@@ -13,6 +13,8 @@ async function bootstrap() {
     }),
   );
 
+  app.enableCors();
+
   app.use(helmet());
 
   const config = new DocumentBuilder()
